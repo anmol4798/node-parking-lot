@@ -12,7 +12,7 @@ const container = require('./di'),
 
 server(container).then((app) => {
 	console.log(
-		`Server started succesfully, running on port - 5297`
+		`Server started succesfully, running on port - 4798`
 	);
 	app.on('close', () => {});
 });

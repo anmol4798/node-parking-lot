@@ -13,6 +13,13 @@
   "author": "Anmol Agrawal",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "awilix": "^8.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "ioredis": "^5.3.1",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.0"
   }
 }
