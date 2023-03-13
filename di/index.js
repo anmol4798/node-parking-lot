@@ -1,52 +1,52 @@
 const { createContainer, asValue } = require('awilix');
 const container = new createContainer();
     // Foundation
-const config = require('../config');
-const model = require('../model');
+// const config = require('../config');
+// const model = require('../model');
 const utility = require('../utility');
 
 container.register({
-    config: asValue(config),
+    // config: asValue(config),
     utility: asValue(utility),
-    model: asValue(model)
+    // model: asValue(model)
 });
+
 // -------------------------------------------------------------- //
 // Repo layer
-const VendorRepo = require('../repository/database/vendorRepo.js'),
-    vendorRepo = new VendorRepo(container);
+const RedisRepo = require('../repository/database/redisRepo.js');
+const redisRepo = new RedisRepo();
 
-container.register('vendorRepo', asValue(vendorRepo));
+container.register('redisRepo', asValue(redisRepo));
 
-const KycPagesRepo = require('../repository/database/kycPagesRepo.js'),
-    kycPagesRepo = new KycPagesRepo(container);
-
-container.register('kycPagesRepo', asValue(kycPagesRepo));
 // -------------------------------------------------------------- //
 // Logic layer
-const ProfileLogic = require('../api/profileLogic.js.js'),
-    profileLogic = new ProfileLogic(container);
+const ParkingLogic = require('../logic/parking.js');
+const parkingLogic = new ParkingLogic(container);
 
-container.register('profileLogic', asValue(profileLogic));
+container.register('parkingLogic', asValue(parkingLogic));
+
 // -------------------------------------------------------------- //
 // API layer
-const CreateProfileApi = require('../api/v1/vendor/create.js'),
-    createProfileApi = new CreateProfileApi(container);
+const CreateParkingApi = require('../api/v1/parking/create.js');
+const createParkingApi = new CreateParkingApi(container);
 
-container.register('createProfileApi', asValue(createProfileApi));
+container.register('createParkingApi', asValue(createParkingApi));
 
-const FetchProfileApi = require('../api/v1/vendor/fetch.js'),
-    fetchProfileApi = new FetchProfileApi(container);
+const UpdateParkingApi = require('../api/v1/parking/update.js');
+const updateParkingApi = new UpdateParkingApi(container);
 
-container.register('fetchProfileApi', asValue(fetchProfileApi));
+container.register('updateParkingApi', asValue(updateParkingApi));
 
-const FetchVendorMetaApi = require('../api/v1/profile/meta.js'),
-    fetchVendorMetaApi = new FetchVendorMetaApi(container);
+const DeleteParkingApi = require('../api/v1/parking/delete.js');
+const deleteParkingApi = new DeleteParkingApi(container);
 
-container.register('fetchVendorMetaApi', asValue(fetchVendorMetaApi));
+container.register('deleteParkingApi', asValue(deleteParkingApi));
 
-const PutVendorMetaApi = require('../api/v1/profile/update.js'),
-    putVendorMetaApi = new PutVendorMetaApi(container);
+const ReadParkingApi = require('../api/v1/parking/read.js');
+const readParkingApi = new ReadParkingApi(container);
 
-container.register('putVendorMetaApi', asValue(putVendorMetaApi));
+container.register('readParkingApi', asValue(readParkingApi));
+
+
 
 module.exports = container;

@@ -27,9 +27,9 @@ const server = container => {
 			next();
 		});
 		app.get('/', (req, res) => {
-			return res.send('Hello from Vendor user service!');
+			return res.send('Hello from Parking service!');
 		});
-		app.use('/vendor-user-service', router);
+		app.use('/parking-service', router);
 
 		const server = app.listen(4798, () => {
 			server.keepAliveTimeout = 120000;

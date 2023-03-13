@@ -1,19 +1,19 @@
 const router = (require('express')).Router();
 
-router.post('/internal/vendors', (req, res) => {
-	req.container.resolve('createProfileApi').handleRequest(req, res);
+router.post('/parking', (req, res) => {
+	req.container.resolve('createParkingApi').handleRequest(req, res);
 });
 
-router.get('/internal/vendors', (req, res) => {
-	req.container.resolve('fetchProfileApi').handleRequest(req, res);
+router.put('/parking', (req, res) => {
+	req.container.resolve('updateParkingApi').handleRequest(req, res);
 });
 
-router.put('/vendors/profile/:section', (req, res) => {
-	req.container.resolve('putVendorMetaApi').handleRequest(req, res);
+router.get('/parking', (req, res) => {
+	req.container.resolve('readParkingApi').handleRequest(req, res);
 });
 
-router.get('/vendors/profile/:section', (req, res) => {
-	req.container.resolve('fetchVendorMetaApi').handleRequest(req, res);
+router.delete('/parking', (req, res) => {
+	req.container.resolve('deleteParkingApi').handleRequest(req, res);
 });
 
 module.exports = router;
