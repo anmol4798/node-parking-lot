@@ -1,14 +1,9 @@
 const { createContainer, asValue } = require('awilix');
 const container = new createContainer();
-    // Foundation
-// const config = require('../config');
-// const model = require('../model');
 const utility = require('../utility');
 
 container.register({
-    // config: asValue(config),
-    utility: asValue(utility),
-    // model: asValue(model)
+    utility: asValue(utility)
 });
 
 // -------------------------------------------------------------- //
@@ -24,6 +19,11 @@ const ParkingLogic = require('../logic/parking.js');
 const parkingLogic = new ParkingLogic(container);
 
 container.register('parkingLogic', asValue(parkingLogic));
+
+const TicketLogic = require('../logic/ticket.js');
+const ticketLogic = new TicketLogic(container);
+
+container.register('ticketLogic', asValue(ticketLogic));
 
 // -------------------------------------------------------------- //
 // API layer
@@ -47,6 +47,30 @@ const readParkingApi = new ReadParkingApi(container);
 
 container.register('readParkingApi', asValue(readParkingApi));
 
+const CreateTicketApi = require('../api/v1/ticket/create.js');
+const createTicketApi = new CreateTicketApi(container);
+
+container.register('createTicketApi', asValue(createTicketApi));
+
+const UpdateTicketApi = require('../api/v1/ticket/update.js');
+const updateTicketApi = new UpdateTicketApi(container);
+
+container.register('updateTicketApi', asValue(updateTicketApi));
+
+const DeleteTicketApi = require('../api/v1/ticket/delete.js');
+const deleteTicketApi = new DeleteTicketApi(container);
+
+container.register('deleteTicketApi', asValue(deleteTicketApi));
+
+const ReadTicketApi = require('../api/v1/ticket/read.js');
+const readTicketApi = new ReadTicketApi(container);
+
+container.register('readTicketApi', asValue(readTicketApi));
+
+const SettleTicketApi = require('../api/v1/ticket/settle.js');
+const settleTicketApi = new SettleTicketApi(container);
+
+container.register('settleTicketApi', asValue(settleTicketApi));
 
 
 module.exports = container;

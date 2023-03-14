@@ -15,7 +15,6 @@ class CreateParking {
         const [createErr, ] = await this.utility.invoker(this.parkingLogic.createOrUpdate(payload, parkingId));
 
         if (createErr) {
-            console.log(createErr);
             return res.status(400).json({
                 data: null,
                 message: 'Parking could not be created'

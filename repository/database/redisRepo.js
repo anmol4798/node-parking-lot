@@ -37,6 +37,17 @@ class RedisRepo {
             });
         });
     }
+
+    getKeyFromHash(name, key) {
+        return new Promise((resolve, reject) => {
+            redis.hget(name, key, (err, res) => {
+                if(err) {
+                    return reject(err);
+                }
+                return resolve(res);
+            });
+        });
+    }
 }
 
 module.exports = RedisRepo;
