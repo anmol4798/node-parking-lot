@@ -9,7 +9,9 @@ class ParkingLogic {
     }
 
     async fetch(parkingId) {
-        return await this.redisRepo.getWholeHash(`Parking_${parkingId}`);
+        let [parkingErr, parking] = await this.utility.invoker(this.redisRepo.getWholeHash(`Parking_${parkingId}`));
+        _.set(parking, 'tickets', JSON.parse(_.get(parking, 'tickets', "[]")));
+        return parking;
     }
 
     async createOrUpdate(meta, parkingId) {

@@ -1,11 +1,6 @@
-const Common = require('./common.js'),
-    common = new Common(),
-    CredentialGenerator = require('./credentialGenerator.js'),
-    credentialGenerator = new CredentialGenerator(),
-    constants = require('./constants');
+const Common = require('./common.js');
+const common = new Common();
 
 module.exports = {
-    common,
-    credentialGenerator,
-    constants
+    common
 }
